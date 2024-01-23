@@ -1,0 +1,85 @@
+INSERT INTO lts.sites (site_id) VALUES('DSN');
+INSERT INTO lts.sites (site_id) VALUES('DSS');
+
+INSERT INTO lts.things (thing_id, site_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', 'DSN') ;
+INSERT INTO lts.things (thing_id, site_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', 'DSN');
+INSERT INTO lts.things (thing_id, site_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', 'DSN');
+INSERT INTO lts.things (thing_id, site_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', 'DSN');
+INSERT INTO lts.things (thing_id, site_id) VALUES('2015606', 'DSS');
+
+INSERT INTO lts.thing_configs (thing_id, create_time, thing_name, site_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'DSN_Digilab02', 'DSN');
+INSERT INTO lts.thing_configs (thing_id, create_time, thing_name, site_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'DSN_Digilab01', 'DSN');
+INSERT INTO lts.thing_configs (thing_id, create_time, thing_name, site_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'DSN_Digilab03', 'DSN');
+INSERT INTO lts.thing_configs (thing_id, create_time, thing_name, site_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'DSN_Digilab04', 'DSN');
+INSERT INTO lts.thing_configs (thing_id, create_time, thing_name, site_id) VALUES('2015606', now(), 'DSS_ROOM1', 'DSS');
+
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', '9e1398aa-45cb-4a18-a714-66d9c01c4dc2');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', '978e14dc-e36e-41c6-b56f-28eeb0f1856e');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', '36a2d825-3eea-4c70-ae96-e91e40887a37');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', '2ecadc0f-9fab-4109-9dfb-da9173501917');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', 'c77b8bf6-56ca-49f3-9255-20f2912d33db');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', 'ef94c02c-b895-4669-997e-dca2faa5ecbd');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('7d39591b-67ec-462e-8d85-e673d5fee660', 'e684b127-0cd9-4655-8527-5b764bf1eb8d');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', '4395c1d2-6639-4b1c-b545-871c618a4fbb');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', 'd2c29e00-7c4f-4632-9fd3-da511e1514ef');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', 'daee94f9-fbad-4db9-8924-8833d3776ed3');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', '77fd8c79-f91e-498f-8982-848f8692e503');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', '1de70c25-6c38-4378-9166-4ff3810fc886');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', '6173583f-12a0-4f4c-8d3c-3b1e5a5754a2');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('900a2d09-2395-4789-bd9c-6dd025861e0d', '365cc58d-f6a8-4bab-b4b5-f83043b70400');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', '848c5536-4603-4740-b279-a49adec145fd');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', '232206d0-5a9d-4d7b-a3a0-96b456aa6f58');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', '9b3e2e0c-b41b-4f62-b3b4-37c160696201');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', 'a8205c27-91ea-4f88-a991-212ed36619a4');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', '9a5817b5-33a8-4e70-b2b2-05f63cb11990');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', 'fb1b4a49-cf72-4f00-b037-cfe20ef35d48');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('a328ba2a-8272-46f0-ac57-87ed62fe2f44', '315c0209-1ae8-407f-ac1d-e491ae2ee17c');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '7a7b9072-f675-4f8f-b753-00cc2ae0a766');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '242c9b88-ef20-4c3f-8586-9c6d6bbede95');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', 'e85a8332-bbaf-4911-932f-dcd081916107');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '860b0064-36b9-43a4-91a3-71fe0b5dd616');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '4162e10a-3758-4c50-96e7-683a7f673543');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '74070a12-88d8-4a60-9604-d3375f0331d5');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', '64303270-33d0-44c7-9a2e-7578d2609518');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('2015606', '2015606-noise');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('2015606', '2015606-illuminance');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('2015606', '2015606-humidity');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('2015606', '2015606-temperature');
+INSERT INTO lts.thing_properties (thing_id, property_id) VALUES('2015606', '2015606-pirmotion');
+
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('9e1398aa-45cb-4a18-a714-66d9c01c4dc2', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'AirPressure', 'kilopascal');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('978e14dc-e36e-41c6-b56f-28eeb0f1856e', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'HumInsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('36a2d825-3eea-4c70-ae96-e91e40887a37', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'TempInsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2ecadc0f-9fab-4109-9dfb-da9173501917', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'HumOutsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('c77b8bf6-56ca-49f3-9255-20f2912d33db', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'Illuminance', 'lux');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('ef94c02c-b895-4669-997e-dca2faa5ecbd', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'TempOutsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('e684b127-0cd9-4655-8527-5b764bf1eb8d', '7d39591b-67ec-462e-8d85-e673d5fee660', now(), 'PIRMotion', 'True/False');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('4395c1d2-6639-4b1c-b545-871c618a4fbb', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'AirPressure', 'kilopascal');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('d2c29e00-7c4f-4632-9fd3-da511e1514ef', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'HumInsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('daee94f9-fbad-4db9-8924-8833d3776ed3', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'TempInsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('77fd8c79-f91e-498f-8982-848f8692e503', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'HumOutsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('1de70c25-6c38-4378-9166-4ff3810fc886', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'Illuminance', 'lux');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('6173583f-12a0-4f4c-8d3c-3b1e5a5754a2', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'TempOutsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('365cc58d-f6a8-4bab-b4b5-f83043b70400', '900a2d09-2395-4789-bd9c-6dd025861e0d', now(), 'PIRMotion', 'True/False');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('848c5536-4603-4740-b279-a49adec145fd', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'AirPressure', 'kilopascal');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('232206d0-5a9d-4d7b-a3a0-96b456aa6f58', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'HumInsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('9b3e2e0c-b41b-4f62-b3b4-37c160696201', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'TempInsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('a8205c27-91ea-4f88-a991-212ed36619a4', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'HumOutsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('9a5817b5-33a8-4e70-b2b2-05f63cb11990', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'Illuminance', 'lux');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('fb1b4a49-cf72-4f00-b037-cfe20ef35d48', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'TempOutsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('315c0209-1ae8-407f-ac1d-e491ae2ee17c', 'a328ba2a-8272-46f0-ac57-87ed62fe2f44', now(), 'PIRMotion', 'True/False');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('7a7b9072-f675-4f8f-b753-00cc2ae0a766', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'AirPressure', 'kilopascal');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('242c9b88-ef20-4c3f-8586-9c6d6bbede95', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'HumInsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('e85a8332-bbaf-4911-932f-dcd081916107', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'TempInsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('860b0064-36b9-43a4-91a3-71fe0b5dd616', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'HumOutsideDevice', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('4162e10a-3758-4c50-96e7-683a7f673543', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'Illuminance', 'lux');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('74070a12-88d8-4a60-9604-d3375f0331d5', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'TempOutsideDevice', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('64303270-33d0-44c7-9a2e-7578d2609518', 'ccfb60b8-1fd7-41b6-a32c-6a1bd110524c', now(), 'PIRMotion', 'True/False');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2015606-noise', '2015606', now(), 'noise', 'NULL');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2015606-illuminance', '2015606', now(), 'illuminance', 'lux');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2015606-humidity', '2015606', now(), 'humidity', 'relative humidity');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2015606-temperature', '2015606', now(), 'temperature', 'deg celsius');
+INSERT INTO lts.thing_property_configs (property_id, thing_id, create_time, variable_name, measurement_unit) VALUES('2015606-pirmotion', '2015606', now(), 'pirmotion', 'True/False');
+
+
+
