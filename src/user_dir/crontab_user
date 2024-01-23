@@ -1,0 +1,14 @@
+# m h  dom mon dow   command
+MAILTO=""
+*/5 * * * * python digilab_lts_upload.py HumInsideDevice hum_inside_device
+*/5 * * * * python digilab_lts_upload.py HumOutsideDevice hum_outside_device
+*/5 * * * * python digilab_lts_upload.py TempOutsideDevice temp_outside_device
+*/5 * * * * python digilab_lts_upload.py AirPressure air_pressure
+*/5 * * * * python digilab_lts_upload.py Illuminance illuminance
+* * * * * python digilab_lts_upload.py PIRMotion pir_motion
+*/5 * * * * python digilab_lts_upload.py TempInsideDevice temp_inside_device
+*/5 * * * * python digilab_lts_upload_DSS.py humidity hum_outside_device
+*/5 * * * * python digilab_lts_upload_DSS.py temperature temp_outside_device
+*/5 * * * * python digilab_lts_upload_DSS.py illuminance illuminance
+* * * * * python digilab_lts_upload_DSS.py pirmotion pir_motion
+*/5 * * * * python digilab_lts_upload_DSS.py noise noise

@@ -1,0 +1,11 @@
+# Arduino
+CLIENT_ID=xx
+CLIENT_SECRET=xx
+
+# PostgreSQL
+LTS_USER=xx
+LTS_PASSWORD=xx
+LTS_HOST=xx
+LTS_PORT=xx
+LTS_DATABASE=xx
+
