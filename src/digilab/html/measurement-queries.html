@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement-queries from Long Time Storage</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <style>
+        #content {
+            margin-top: 50px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+
+        <h1>DigiLab/BE - Measurement-queries from Long Time Storage</h1>
+        <br />
+        <h3>Sensors</h3>
+
+        <p>The sensor data in this project is indoor climate data in two buildings on School/University campuses in
+            Norway and Spain.</p>
+        <br />
+        <h3>Data harvesting </h3>
+
+        <p>Sensor data is uploaded to the Long Time Storage database every 5 minutes, except for the motion data which
+            is
+            uploaded every minute.</p>
+        <br />
+        <h3>Database views</h3>
+
+        <p>Data from each sensor variable is stored in tables in the database, one table for each variable. Data from
+            these tables are made available for the database users via database views.</p>
+
+        <table class="pure-table pure-table-bordered pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Database view</th>
+                    <th>Variable name</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>latest_measurements_view</td>
+                    <td>not applicable (multiple)</td>
+                    <td>not applicable (multiple)</td>
+                </tr>
+                <tr>
+                    <td>temp_outside_device_view</td>
+                    <td>TempOutsideDevice</td>
+                    <td>deg celsius</td>
+                </tr>
+                <tr>
+                    <td>temp_inside_device_view</td>
+                    <td>TempInsideDevice</td>
+                    <td>deg celsius</td>
+                </tr>
+                <tr>
+                    <td>hum_outside_device_view</td>
+                    <td>HumOutsideDevice</td>
+                    <td>relative humidity</td>
+                </tr>
+                <tr>
+                    <td>hum_inside_device_view</td>
+                    <td>HumInsideDevice</td>
+                    <td>relative humidity</td>
+                </tr>
+                <tr>
+                    <td>air_pressure_view</td>
+                    <td>AirPressure</td>
+                    <td>kilopascal</td>
+                </tr>
+                <tr>
+                    <td>illuminance_view</td>
+                    <td>Illuminance</td>
+                    <td>lux</td>
+                </tr>
+
+                <tr>
+                    <td>pir_motion_view</td>
+                    <td>PIRMotion</td>
+                    <td>True/False</td>
+                </tr>
+                <tr>
+                    <td>noise_view</td>
+                    <td>noise</td>
+                    <td>dB</td>
+                </tr>
+                <tr>
+                    <td>current_config_view</td>
+                    <td>not applicable (multiple)</td>
+                    <td>not applicable (multiple)</td>
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        <h3>Example queries</h3>
+
+        <p>These are examples of queries that can be made by proper use of the text fields on the previous page. Note
+            that in the text boxes, the part before the question mark go into the first text box, and the rest
+            (including the question mark), in the second text box.</p>
+
+        <table class="pure-table pure-table-bordered pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Query</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/air_pressure_view?thing_name=in.(DSN_Digilab01) </td>
+                    <td>Air pressure measurements from sensor Digilab01</td>
+                </tr>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/noise_view?thing_name=in.(DSS_ROOM1)&order=measurement_time.desc&limit=20
+                    </td>
+                    <td>Last 20 measurements of noise from DSS_ROOM1 sensor </td>
+                </tr>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/air_pressure_view</td>
+                    <td>All air pressure measurements from all sensors</td>
+                </tr>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/temp_outside_device_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]
+                    </td>
+                    <td>Temperature outside sensor compartment at sensor DSS_ROOM1, after 1st of November 2024, ordered
+                        by measurement time</td>
+                </tr>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/latest_measurements_view</td>
+                    <td>All latest measuremenst from all sensors</td>
+                </tr>
+                <tr>
+                    <td>http://speckle.it.ntnu.no:3000/current_config_view</td>
+                    <td>Shows details about the sensors</td>
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        <h3>More advanced queries</h3>
+
+        Based on examples presented above, you can try to combine element from several queries. Muliple criteria can be
+        combined via '&'-sign.
+
+        For more details about queries, see the <a href="https://docs.postgrest.org/en/v12/">PostgREST
+            documentation</a>, especially the section <a
+            href="https://docs.postgrest.org/en/v12/references/api/tables_views.html">'Tables and Views'</a>,
+
+        </id>
+        <br /><br />
+</body>
+
+</html>

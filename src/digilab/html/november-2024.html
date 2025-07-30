@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor data from long time storage, November 2024</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous" />
+    <style>
+        #content {
+            margin-top: 50px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+
+        <h1>DigiLab/BE Sensor data from long time storage, November 2024</h1>
+
+        <h2>Live data in JSON format</h2>
+
+        <p>Spain: DSS_ROOM1</p>
+        <br/>
+        <table class="pure-table pure-table-bordered pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Data variable</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Temperature</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/temp_outside_device_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">
+                            http://speckle.it.ntnu.no:3000/temp_outside_device_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/hum_outside_device_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">
+                            http://speckle.it.ntnu.no:3000/hum_outside_device_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Illuminance</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/illuminance_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">
+                            http://speckle.it.ntnu.no:3000/illuminance_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Noise</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/noise_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">
+                            http://speckle.it.ntnu.no:3000/noise_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Motion</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/pir_motion_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">
+                            http://speckle.it.ntnu.no:3000/pir_motion_view?thing_name=in.(DSS_ROOM1)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br/>
+
+        <p>Norway: DSN_Digilab01</p>
+        <br/>
+        <table class="pure-table pure-table-bordered pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Data variable</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Temperature inside sensor compartment</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/temp_inside_device_view?thing_name=in.(DSN_Digilab01)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">http://speckle.it.ntnu.no:3000/temp_inside_device_view?thing_name=in.(DSN_Digilab01)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Humidity inside sensor compartment</td>
+                    <td><a
+                            href="http://speckle.it.ntnu.no:3000/hum_inside_device_view?thing_name=in.(DSN_Digilab01)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]">http://speckle.it.ntnu.no:3000/hum_inside_device_view?thing_name=in.(DSN_Digilab01)&order=measurement_time&measurement_time=gt.[2024-11-01T00:00]&measurement_time=lt.[2024-12-01T00:00]</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>Data files in CSV format</h2>
+
+        <p>Spain: DSS_ROOM1</p>
+        <ul>
+            <li><a href="DSS_ROOM1/temp_outside_device_view.csv">Temperature</a></li>
+            <li><a href="DSS_ROOM1/hum_outside_device_view.csv">Humidity</a></li>
+            <li><a href="DSS_ROOM1/illuminance_view.csv">Illuminance</a></li>
+            <li><a href="DSS_ROOM1/noise_view.csv">Noise</a></li>
+            <li><a href="DSS_ROOM1/pir_motion_view.csv">Motion</a></li>
+        </ul>
+
+        <p>Norway: DSN_Digilab01</p>
+        <ul>
+            <li><a href="DSN_Digilab01/temp_inside_device_view.csv">Temperature inside sensor compartment</a></li>
+            <li><a href="DSN_Digilab01/hum_inside_device_view.csv">Humidity inside sensor compartment</a></li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

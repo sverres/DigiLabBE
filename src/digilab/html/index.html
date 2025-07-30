@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digilab/BE Erasmus+ project - data resources</title>
+    <style>
+        #content {
+            margin-top: 50px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="content">
+
+        <h1>DigiLab/BE Erasmus+ project - data resources</h1>
+
+        <table class="pure-table pure-table-bordered pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Resource</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Digital Twin data files</td>
+                    <td><a href="http://speckle.it.ntnu.no:7070/data.html">http://speckle.it.ntnu.no:7070/data.html</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Arduino code</td>
+                    <td><a href="https://github.com/digilabbeteam">https://github.com/digilabbeteam</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Long Time Storage configuration files</td>
+                    <td><a href="https://github.com/sverres/DigiLabBE">https://github.com/sverres/DigiLabBE</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sensor data - example data files for November 2024</td>
+                    <td><a href="http://speckle.it.ntnu.no:7070/november-2024.html">http://speckle.it.ntnu.no:7070/november-2024.html</a></td>
+                </tr>
+                <tr>
+                    <td>Sensor data - API documentation (Swagger)</td>
+                    <td><a href="http://speckle.it.ntnu.no:8080">http://speckle.it.ntnu.no:8080</a></td>
+                </tr>
+                <tr>
+                    <td>Sensor data - documentation for "Measurements" queries from this page</td>
+                    <td><a href="http://speckle.it.ntnu.no:7070/measurement-queries.html">http://speckle.it.ntnu.no:7070/measurement-queries.html</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+
+        <h2>DigiLab sensor data - Long Time Storage</h2>
+            <h3>Measurements - select sensor view and query parameters</h3>
+
+        <form class="pure-form" action="javascript:void(0);">
+            <fieldset>
+                <input list="table-list" size=60 id="table"
+                    placeholder="1: Click to see available data views - clear text box to select another" />
+                <datalist id="table-list">
+                    <option value="http://speckle.it.ntnu.no:3000/latest_measurements_view">
+                    <option value="http://speckle.it.ntnu.no:3000/temp_outside_device_view">
+                    <option value="http://speckle.it.ntnu.no:3000/temp_inside_device_view">
+                    <option value="http://speckle.it.ntnu.no:3000/hum_outside_device_view">
+                    <option value="http://speckle.it.ntnu.no:3000/hum_inside_device_view">
+                    <option value="http://speckle.it.ntnu.no:3000/air_pressure_view">
+                    <option value="http://speckle.it.ntnu.no:3000/illuminance_view">
+                    <option value="http://speckle.it.ntnu.no:3000/pir_motion_view">
+                    <option value="http://speckle.it.ntnu.no:3000/noise_view">
+                    <option value="http://speckle.it.ntnu.no:3000/current_config_view">
+                </datalist>
+                <input list="parameter-list" size=100 id="parameters"
+                    placeholder="2: Click to see example queries - modify to fit your request - clear text box to select another" />
+                <datalist id="parameter-list">
+                    <option value="?thing_name=in.(DSS_ROOM1)&order=measurement_time.desc&limit=20">
+                    <option value="?order=measurement_time.desc&limit=8">
+                    <option value="?thing_name=in.(DSN_Digilab01)">
+                    <option value="?thing_name=like(any).{*02,*03}">
+                    <option value="?thing_name=in.(DSN_Digilab01)&measurement_time=gt.[2023-11-08T11:00]">
+                    <option
+                        value="?thing_name=in.(DSN_Digilab01)&measurement_time=gt.[2023-11-01]&measurement_time=lt.[2023-12-31])">
+                </datalist>
+                <button type="submit" class="pure-button pure-button-primary" id="ok-button">OK</button>
+            </fieldset>
+        </form>
+
+        <div id="sensor-data"></div>
+
+        <div></div>
+        <p id="download-data" hidden="true">
+            First 100 rows shown. Download all rows in <a id="a2" download="digilab.csv">digilab.csv</a>
+        </p>
+
+    </div>
+    <script>
+
+        function json2Table(json) {
+            let cols = Object.keys(json[0]);
+
+
+            //Map over columns, make headers,join into string
+            let headerRow = cols
+                .map(col => `<th>${col}</th>`)
+                .join("");
+
+            //map over array of json objs, for each row(obj) map over column values,
+            //and return a td with the value of that object for its column
+            //take that array of tds and join them
+            //then return a row of the tds
+            //finally join all the rows together
+            let rows = json.slice(0, 100)
+                .map(row => {
+                    let tds = cols.map(col => `<td>${row[col]}</td>`).join("");
+                    return `<tr>${tds}</tr>`;
+                })
+                .join("");
+
+            //build the table
+            const table = `
+      <table class="pure-table pure-table-bordered pure-table-striped">
+          <thead>
+              <tr>${headerRow}</tr>
+          <thead>
+          <tbody>
+              ${rows}
+          <tbody>
+      <table>`;
+
+            return table;
+        };
+
+
+
+        const createTable = async () => {
+
+            dataUrl = document.getElementById("table").value;
+            dataParameters = document.getElementById("parameters").value;
+
+            const url = dataUrl + dataParameters;
+
+            response = await fetch(url);
+
+            if (response.ok) {
+
+                const apiData = await response.json();
+
+                const tableSection = document.getElementById('sensor-data');
+
+                // fjerne eventuell eksisterende tabell
+                while (tableSection.lastChild) {
+                    tableSection.removeChild(tableSection.lastChild);
+                };
+
+                document.getElementById('download-data').hidden = true;
+
+                if (apiData.length) {
+
+                    // resten av koden i denne funksjonen handler om å plukke ut data fra 
+                    // apiData og å lage og fylle ut en tabell
+
+                    const tableData = json2Table(apiData);
+
+                    const tableNode = document.createElement('div');
+                    const table = tableSection.appendChild(tableNode);
+                    table.innerHTML = tableData;
+
+                    // get keys as array
+                    const keys = Object.keys(apiData[0]);
+
+                    const commaSeparatedString = [keys.join(","), apiData.map(row => keys.map(key => row[key]).join(",")).join("\n")].join("\n");
+
+                    const csvBlob = new Blob([commaSeparatedString]);
+
+                    const a2 = document.getElementById("a2");
+
+                    a2.href = URL.createObjectURL(csvBlob);
+
+                    document.getElementById('download-data').hidden = false;
+
+                };
+            };
+        };
+
+        const addOkButtonEventListener = () => {
+
+            const okButton = document.getElementById('ok-button');
+            okButton.addEventListener('click', () => {
+                createTable();
+            });
+        };
+
+        addOkButtonEventListener();
+    </script>
+</body>
+
+</html>
