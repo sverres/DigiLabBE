@@ -1,0 +1,12 @@
+{
+local_certs
+}
+
+speckle.it.ntnu.no {
+tls /speckle.it.ntnu.no.crt /speckle.it.ntnu.no.key
+reverse_proxy speckle-ingress:8080
+}
+
+localhost {
+respond "gå vekk"
+}

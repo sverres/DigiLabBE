@@ -1,0 +1,203 @@
+name: 'speckle-server'
+
+services:
+  ####
+  # Speckle Server dependencies
+  #######
+  postgres:
+    image: 'postgres:14.5-alpine'
+    restart: always
+    environment:
+      POSTGRES_DB: speckle
+      POSTGRES_USER: speckle
+      POSTGRES_PASSWORD: speckle
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    healthcheck:
+      # the -U user has to match the POSTGRES_USER value
+      test: ["CMD-SHELL", "pg_isready -U speckle"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: 'redis:7-alpine'
+    restart: always
+    volumes:
+      - redis-data:/data
+    ports:
+      - '127.0.0.1:6379:6379'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  minio:
+    image: 'minio/minio'
+    command: server /data --console-address ":9001"
+    restart: always
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ####
+  # Speckle Server
+  #######
+  speckle-ingress:
+    image: speckle/speckle-docker-compose-ingress:2
+    restart: always
+    #ports:
+    #  - '0.0.0.0:80:8080'
+    environment:
+      FILE_SIZE_LIMIT_MB: '100'
+      NGINX_ENVSUBST_OUTPUT_DIR: '/etc/nginx'
+
+  speckle-frontend-2:
+    image: speckle/speckle-frontend-2:2
+    restart: always
+    environment:
+      NUXT_PUBLIC_SERVER_NAME: 'local'
+      # TODO: Change NUXT_PUBLIC_API_ORIGIN to the URL of the speckle server, as accessed from the network. This is the same value as should be used for the CANONICAL_URL in the server section below.
+      NUXT_PUBLIC_API_ORIGIN: 'xx'
+      NUXT_PUBLIC_BACKEND_API_ORIGIN: 'http://speckle-server:3000'
+
+  speckle-server:
+    image: speckle/speckle-server:2
+    restart: always
+    healthcheck:
+      test: ["CMD", "node", "-e", "try { require('node:http').request({headers: {'Content-Type': 'application/json'}, port:3000, hostname:'127.0.0.1', path:'/graphql?query={serverInfo{version}}', method: 'GET', timeout: 2000 }, (res) => { body = ''; res.on('data', (chunk) => {body += chunk;}); res.on('end', () => {process.exit(res.statusCode != 200 || body.toLowerCase().includes('error'));}); }).end(); } catch { process.exit(1); }"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+
+    environment:
+      # TODO: Change this to the URL of the speckle server, as accessed from the network
+      CANONICAL_URL: 'xx'
+      SPECKLE_AUTOMATE_URL: 'http://127.0.0.1:3030'
+
+      REDIS_URL: 'redis://redis'
+
+      S3_ENDPOINT: 'http://minio:9000'
+      S3_ACCESS_KEY: 'xx'
+      S3_SECRET_KEY: 'xx'
+      S3_BUCKET: 'xx'
+      S3_CREATE_BUCKET: 'true'
+
+      FILE_SIZE_LIMIT_MB: 100
+
+      # TODO: Change this to a unique secret for this server
+      SESSION_SECRET: 'xx'
+
+      STRATEGY_LOCAL: 'true'
+      DEBUG: 'speckle:*'
+
+      POSTGRES_URL: 'postgres'
+      POSTGRES_USER: 'xx'
+      POSTGRES_PASSWORD: 'xx'
+      POSTGRES_DB: 'xx'
+      ENABLE_MP: 'false'
+
+      EMAIL: "true"
+      EMAIL_HOST: 'xx'
+      EMAIL_PORT: 'xx'
+      EMAIL_USERNAME: 'xx'
+      EMAIL_PASSWORD: 'xx'
+      EMAIL_FROM: 'xx'
+
+      USE_FRONTEND_2: 'true'
+      # TODO: Change this to the URL of the speckle server, as accessed from the network
+      FRONTEND_ORIGIN: 'xx'
+
+  preview-service:
+    image: speckle/speckle-preview-service:2
+    restart: always
+    depends_on:
+      speckle-server:
+        condition: service_healthy
+    mem_limit: '1000m'
+    memswap_limit: '1000m'
+    environment:
+      DEBUG: 'preview-service:*'
+      PG_CONNECTION_STRING: 'xx'
+
+  webhook-service:
+    image: speckle/speckle-webhook-service:2
+    restart: always
+    depends_on:
+      speckle-server:
+        condition: service_healthy
+    environment:
+      DEBUG: 'webhook-service:*'
+      PG_CONNECTION_STRING: 'xx'
+      WAIT_HOSTS: postgres:5432
+
+  fileimport-service:
+    image: speckle/speckle-fileimport-service:2
+    restart: always
+    depends_on:
+      speckle-server:
+        condition: service_healthy
+    environment:
+      DEBUG: 'fileimport-service:*'
+      PG_CONNECTION_STRING: 'xx'
+      WAIT_HOSTS: postgres:5432
+
+      S3_ENDPOINT: 'http://minio:9000'
+      S3_ACCESS_KEY: 'minioadmin'
+      S3_SECRET_KEY: 'minioadmin'
+      S3_BUCKET: 'speckle-server'
+
+      SPECKLE_SERVER_URL: 'http://speckle-server:3000'
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - /opt/speckle/Caddyfile:/etc/caddy/Caddyfile
+      - /opt/speckle/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+      - 'xx'
+      - 'xx'
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: speckledbadmin@ntnu.no
+      PGADMIN_DEFAULT_PASSWORD: 'maximum list pasture anywhere'
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8855:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+networks:
+  default:
+    name: speckle-server
+
+volumes:
+  caddy_data:
+  caddy_config:
+  postgres-data:
+  redis-data:
+  minio-data:
+  pgadmin-data:
+
